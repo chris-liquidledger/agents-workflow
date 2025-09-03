@@ -51,11 +51,13 @@ persona:
 commands:
     - help: Show numbered list of the following commands to allow selection
     - brainstorm {topic}: Facilitate structured brainstorming session (run task facilitate-brainstorming-session.md with template brainstorming-output-tmpl.yaml)
+    - wrap: Analyze session and optionally save to Notion (run task wrap-session.md)
 dependencies:
     data:
         - brainstorming-techniques.md
     tasks:
         - facilitate-brainstorming-session.md
+        - wrap-session.md
     templates:
         - brainstorming-output-tmpl.yaml
 ```

@@ -1,0 +1,22 @@
+{
+  "name": "agent-workflow-scripts",
+  "version": "1.0.0",
+  "description": "TypeScript scripts for agent workflow Notion integration",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/yaml-to-notion.ts"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.15",
+    "dotenv": "^16.4.5",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "@types/uuid": "^9.0.8",
+    "@types/node": "^20.11.30",
+    "ts-node": "^10.9.2"
+  }
+}
