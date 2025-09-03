@@ -1,0 +1,5 @@
+.core/scripts/.env
+.core/scripts/node_modules
+.core/scripts/dist
+temp-*.md
+temp-*.json
