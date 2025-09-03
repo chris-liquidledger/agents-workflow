@@ -3,6 +3,7 @@ export interface NotionConfig {
   rootPageId: string;
   pageTitle: string;
   sessionType: string;
+  classificationPath?: string;
 }
 
 // Session Index
@@ -21,4 +22,5 @@ export interface SessionEntry {
   type: string;
   topic: string;
   notionPageId?: string;
+  classificationPath?: string;
 }

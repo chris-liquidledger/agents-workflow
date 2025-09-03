@@ -49,7 +49,7 @@ function parseMarkdownToBlocks(markdown: string): any[] {
   return blocks;
 }
 
-// Create Notion page
+// Create Notion page with chunked blocks to handle API limit
 async function createNotionPage(config: NotionConfig, blocks: any[]) {
   try {
     const response = await notion.pages.create({
@@ -65,10 +65,16 @@ async function createNotionPage(config: NotionConfig, blocks: any[]) {
     });
 
     if (blocks.length > 0) {
-      await notion.blocks.children.append({
-        block_id: response.id,
-        children: blocks
-      });
+      // Chunk blocks to respect 100-block limit per API call
+      const CHUNK_SIZE = 100;
+      for (let i = 0; i < blocks.length; i += CHUNK_SIZE) {
+        const chunk = blocks.slice(i, i + CHUNK_SIZE);
+        await notion.blocks.children.append({
+          block_id: response.id,
+          children: chunk
+        });
+        console.log(`📝 Added chunk ${Math.floor(i/CHUNK_SIZE) + 1}/${Math.ceil(blocks.length/CHUNK_SIZE)} (${chunk.length} blocks)`);
+      }
     }
 
     return response.id;
@@ -135,6 +141,7 @@ async function main() {
   
   let markdownPath = '';
   let pageTitle = 'Agent Session';
+  let classificationPath = '';
   
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--markdown' && args[i + 1]) {
@@ -142,6 +149,9 @@ async function main() {
       i++;
     } else if (args[i] === '--title' && args[i + 1]) {
       pageTitle = args[i + 1];
+      i++;
+    } else if (args[i] === '--path' && args[i + 1]) {
+      classificationPath = args[i + 1];
       i++;
     }
   }
@@ -160,7 +170,8 @@ async function main() {
     const config: NotionConfig = {
       rootPageId: process.env.NOTION_ROOT_PAGE_ID,
       pageTitle: pageTitle,
-      sessionType: 'markdown-export'
+      sessionType: 'markdown-export',
+      classificationPath: classificationPath
     };
     
     const pageId = await exportMarkdownToNotion(markdownPath, config);
