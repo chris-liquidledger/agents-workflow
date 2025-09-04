@@ -1,0 +1,134 @@
+version: 1.0.0
+last_updated: 2025-09-04
+updated_by: ll-ba
+projects:
+  AIMI:
+    domains:
+      Technical:
+        subdomains: []
+        page_count: 0
+        owner_agent: ll-cto
+      Business:
+        subdomains: []
+        page_count: 0
+        owner_agent: ll-ba
+      Product:
+        subdomains: []
+        page_count: 0
+        owner_agent: ll-pm
+    total_pages: 0
+    status: active
+  My-Watch-Club:
+    domains:
+      Technical:
+        subdomains: []
+        page_count: 0
+        owner_agent: ll-cto
+      Business:
+        subdomains: []
+        page_count: 0
+        owner_agent: ll-ba
+      Product:
+        subdomains: []
+        page_count: 0
+        owner_agent: ll-pm
+    total_pages: 0
+    status: active
+cross_references:
+  Agent-Architecture:
+    subdomains:
+      - System-Design
+      - Communication
+    page_count: 2
+    owner_agent: ll-ba
+  Technical-Business:
+    subdomains: []
+    page_count: 0
+    owner_agent: mixed
+meta:
+  Agent-Guidelines:
+    page_count: 0
+    owner_agent: ll-ba
+  Workflow-Templates:
+    page_count: 0
+    owner_agent: ll-ba
+thresholds:
+  expand_project_domains: 10
+  expand_domain_subdomains: 20
+  create_cross_references: 5
+  reorganize_workspace: 100
+  consolidate_similar: 15
+tagging_rules:
+  ll-cto:
+    primary_tags:
+      - technical
+      - architecture
+      - smart-contract
+      - implementation
+    project_indicators:
+      - contract-analysis
+      - deployment
+      - security
+  ll-ba:
+    primary_tags:
+      - business
+      - strategy
+      - brainstorming
+      - analysis
+    project_indicators:
+      - requirements
+      - planning
+      - goals
+  ll-pm:
+    primary_tags:
+      - product
+      - features
+      - roadmap
+      - timeline
+    project_indicators:
+      - user-stories
+      - sprint
+      - release
+  ll-po:
+    primary_tags:
+      - product
+      - requirements
+      - stakeholder
+      - priority
+    project_indicators:
+      - backlog
+      - acceptance-criteria
+      - user-needs
+path_templates:
+  project_specific: /{project}/{domain}/{subdomain}/{content-title}
+  cross_reference: /Cross-References/{theme}/{content-type}/{content-title}
+  meta_content: /Meta/{agent-domain}/{content-type}/{content-title}
+future_agents:
+  ll-design-ui-ux:
+    domain: Design
+    primary_tags:
+      - ui
+      - ux
+      - design
+      - user-experience
+  ll-marketer:
+    domain: Marketing
+    primary_tags:
+      - marketing
+      - campaign
+      - content
+      - growth
+  ll-market-maker:
+    domain: Trading
+    primary_tags:
+      - trading
+      - liquidity
+      - market
+      - strategy
+organizer_guidelines: |
+  When suggesting hierarchy changes:
+  1. Analyze tag frequency and content clustering
+  2. Consider cross-agent collaboration patterns  
+  3. Respect existing agent workflows
+  4. Propose minimal disruption changes
+  5. Always get user approval before major moves

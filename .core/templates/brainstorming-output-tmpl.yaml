@@ -20,19 +20,26 @@ sections:
   - id: executive-summary
     title: Executive Summary
     sections:
-      - id: summary-details
+      - id: context-introduction
         template: |
-          **Topic:** {{session_topic}}
+          ## Bối cảnh phiên làm việc
 
-          **Session Goals:** {{stated_goals}}
+          Phiên brainstorming này được thiết kế để giải quyết thách thức {{session_topic}}, một vấn đề quan trọng trong việc phát triển và tối ưu hóa hệ thống công việc hiện tại. Thông qua việc áp dụng các phương pháp tư duy có hệ thống, chúng tôi hướng đến việc tìm ra những giải pháp khả thi và có thể triển khai được trong thực tế.
 
-          **Techniques Used:** {{techniques_list}}
+      - id: approach-methodology  
+        title: "## Phương pháp tiếp cận"
+        template: |
+          Để đạt được mục tiêu đề ra, chúng tôi đã sử dụng phương pháp {{techniques_list}}, một cách tiếp cận cho phép chúng tôi khám phá vấn đề từ nhiều góc độ khác nhau. Phương pháp này giúp đảm bảo rằng mọi khía cạnh quan trọng đều được xem xét kỹ lưỡng, từ những ý tưởng táo bạo ban đầu cho đến những giải pháp cụ thể có thể triển khai ngay lập tức.
 
-          **Total Ideas Generated:** {{total_ideas}}
-      - id: key-themes
-        title: "Key Themes Identified:"
-        type: bullet-list
-        template: "- {{theme}}"
+      - id: key-outcomes
+        title: "## Kết quả chính"
+        template: |
+          Qua quá trình thảo luận sâu sắc, phiên làm việc đã sinh ra {{total_ideas}} ý tưởng và giải pháp đa dạng. Những ý tưởng này không chỉ đơn thuần là các đề xuất mà còn được phân tích kỹ lưỡng về tính khả thi, tác động tiềm năng và khả năng triển khai trong bối cảnh hiện tại.
+
+      - id: key-themes-narrative
+        title: "## Những chủ đề nổi bật"
+        template: |
+          Thông qua quá trình phân tích, chúng tôi đã xác định được những chủ đề trung tâm định hình cho toàn bộ cuộc thảo luận. Mỗi chủ đề này không chỉ phản ánh một khía cạnh quan trọng của vấn đề mà còn mở ra những hướng phát triển tiềm năng cho tương lai. Các chủ đề chính bao gồm việc {{themes_narrative}} - những yếu tố này sẽ đóng vai trò then chốt trong việc định hình chiến lược triển khai.
 
   - id: technique-sessions
     title: Technique Sessions
@@ -41,113 +48,105 @@ sections:
       - id: technique
         title: "{{technique_name}} - {{duration}}"
         sections:
-          - id: description
-            template: "**Description:** {{technique_description}}"
-          - id: ideas-generated
-            title: "Ideas Generated:"
-            type: numbered-list
-            template: "{{idea}}"
-          - id: insights
-            title: "Insights Discovered:"
-            type: bullet-list
-            template: "- {{insight}}"
-          - id: connections
-            title: "Notable Connections:"
-            type: bullet-list
-            template: "- {{connection}}"
+          - id: technique-introduction
+            template: |
+              ## Bối cảnh kỹ thuật
+
+              Trong giai đoạn này, chúng tôi áp dụng kỹ thuật {{technique_name}} để khám phá vấn đề một cách có hệ thống. {{technique_description}} Kỹ thuật này đặc biệt hiệu quả trong việc mở rộng tư duy và tạo ra những góc nhìn mới lạ về vấn đề đang được thảo luận.
+
+          - id: ideas-narrative
+            title: "## Quá trình phát triển ý tưởng"
+            template: |
+              Qua quá trình áp dụng kỹ thuật này, nhiều ý tưởng quan trọng đã được hình thành và phát triển. Mỗi ý tưởng không chỉ là một đề xuất đơn lẻ mà còn được xây dựng dựa trên những hiểu biết sâu sắc về bối cảnh và yêu cầu thực tế. {{ideas_narrative}}
+
+          - id: insights-discovery
+            title: "## Những phát hiện quan trọng"  
+            template: |
+              Trong quá trình thảo luận, chúng tôi đã khám phá ra những hiểu biết sâu sắc về bản chất của vấn đề. {{insights_narrative}} Những phát hiện này không chỉ giúp làm rõ hiện trạng mà còn chỉ ra những cơ hội cải tiến trong tương lai.
+
+          - id: connections-patterns
+            title: "## Mẫu hình và mối liên hệ"
+            template: |
+              Một khía cạnh đặc biệt quan trọng của phiên làm việc này là việc khám phá ra những mối liên hệ tiềm ẩn giữa các ý tưởng và khái niệm khác nhau. {{connections_narrative}} Những mối liên hệ này tạo thành một bức tranh tổng thể giúp chúng ta hiểu rõ hơn về độ phức tạp và tiềm năng của vấn đề.
 
   - id: idea-categorization
-    title: Idea Categorization
+    title: Phân loại và đánh giá ý tưởng
     sections:
+      - id: categorization-introduction
+        template: |
+          ## Phương pháp phân loại
+
+          Để tối đa hóa giá trị của những ý tưởng đã được tạo ra, chúng tôi tiến hành phân loại chúng dựa trên tính khả thi, thời gian triển khai và tác động tiềm năng. Cách tiếp cận này giúp chúng ta có thể ưu tiên hóa và lập kế hoạch triển khai một cách hiệu quả nhất.
+
       - id: immediate-opportunities
-        title: Immediate Opportunities
-        content: "*Ideas ready to implement now*"
-        repeatable: true
-        type: numbered-list
+        title: "## Cơ hội triển khai ngay lập tức"
         template: |
-          **{{idea_name}}**
-          - Description: {{description}}
-          - Why immediate: {{rationale}}
-          - Resources needed: {{requirements}}
-      - id: future-innovations
-        title: Future Innovations
-        content: "*Ideas requiring development/research*"
-        repeatable: true
-        type: numbered-list
+          Nhóm ý tưởng này bao gồm những giải pháp đã sẵn sàng để triển khai trong thời gian ngắn với các nguồn lực hiện có. {{immediate_opportunities_narrative}} Những ý tưởng này được ưu tiên cao do khả năng tạo ra tác động tích cực ngay lập tức và rủi ro thấp trong quá trình triển khai.
+
+      - id: future-innovations  
+        title: "## Đổi mới trong tương lai"
         template: |
-          **{{idea_name}}**
-          - Description: {{description}}
-          - Development needed: {{development_needed}}
-          - Timeline estimate: {{timeline}}
+          Những ý tưởng trong nhóm này đại diện cho các hướng phát triển dài hạn, đòi hỏi nghiên cứu sâu hơn hoặc phát triển các khả năng mới. {{future_innovations_narrative}} Mặc dù cần thời gian đầu tư, những ý tưởng này có tiềm năng tạo ra những thay đổi căn bản và lâu dài cho hệ thống.
+
       - id: moonshots
-        title: Moonshots
-        content: "*Ambitious, transformative concepts*"
-        repeatable: true
-        type: numbered-list
+        title: "## Những ý tưởng đột phá" 
         template: |
-          **{{idea_name}}**
-          - Description: {{description}}
-          - Transformative potential: {{potential}}
-          - Challenges to overcome: {{challenges}}
+          Đây là những khái niệm táo bạo và có tính chuyển đổi cao, thường đòi hỏi sự thay đổi căn bản trong cách tiếp cận hiện tại. {{moonshots_narrative}} Những ý tưởng này mở ra khả năng tạo ra những bước nhảy vọt trong hiệu suất và khả năng của hệ thống, mặc dù đi kèm với những thách thức đáng kể.
+
       - id: insights-learnings
-        title: Insights & Learnings
-        content: "*Key realizations from the session*"
-        type: bullet-list
-        template: "- {{insight}}: {{description_and_implications}}"
+        title: "## Hiểu biết và bài học rút ra"
+        template: |
+          Quá trình thảo luận đã mang lại những hiểu biết sâu sắc về bản chất của vấn đề và những yếu tố ảnh hưởng đến giải pháp. {{insights_learnings_narrative}} Những bài học này không chỉ có giá trị cho dự án hiện tại mà còn có thể được áp dụng cho những thách thức tương tự trong tương lai.
 
   - id: action-planning
-    title: Action Planning
+    title: Kế hoạch hành động
     sections:
-      - id: top-priorities
-        title: Top 3 Priority Ideas
-        sections:
-          - id: priority-1
-            title: "#1 Priority: {{idea_name}}"
-            template: |
-              - Rationale: {{rationale}}
-              - Next steps: {{next_steps}}
-              - Resources needed: {{resources}}
-              - Timeline: {{timeline}}
-          - id: priority-2
-            title: "#2 Priority: {{idea_name}}"
-            template: |
-              - Rationale: {{rationale}}
-              - Next steps: {{next_steps}}
-              - Resources needed: {{resources}}
-              - Timeline: {{timeline}}
-          - id: priority-3
-            title: "#3 Priority: {{idea_name}}"
-            template: |
-              - Rationale: {{rationale}}
-              - Next steps: {{next_steps}}
-              - Resources needed: {{resources}}
-              - Timeline: {{timeline}}
+      - id: planning-introduction
+        template: |
+          ## Chiến lược triển khai
+
+          Dựa trên những ý tưởng và hiểu biết đã được phát triển, chúng tôi thiết lập một kế hoạch hành động cụ thể nhằm chuyển đổi những khái niệm lý thuyết thành những kết quả thực tế. Kế hoạch này được thiết kế để tối ưu hóa việc sử dụng nguồn lực và đảm bảo tính khả thi trong quá trình triển khai.
+
+      - id: top-priorities-narrative
+        title: "## Ba ưu tiên hàng đầu"
+        template: |
+          Sau khi đánh giá kỹ lưỡng tất cả các ý tưởng đã được tạo ra, chúng tôi đã xác định ba ưu tiên hàng đầu dựa trên tiêu chí tác động, tính khả thi và sự phù hợp với mục tiêu tổng thể. {{priorities_overview}}
+
+          ### Ưu tiên thứ nhất: {{priority_1_name}}
+
+          {{priority_1_rationale}} Đây được coi là ưu tiên quan trọng nhất do {{priority_1_reasoning}}. Các bước triển khai bao gồm {{priority_1_steps}}, với nguồn lực cần thiết là {{priority_1_resources}} và thời gian dự kiến hoàn thành trong {{priority_1_timeline}}.
+
+          ### Ưu tiên thứ hai: {{priority_2_name}}
+
+          {{priority_2_rationale}} Ý tưởng này được xếp hạng cao do {{priority_2_reasoning}}. Quá trình thực hiện sẽ bao gồm {{priority_2_steps}}, đòi hỏi {{priority_2_resources}} và dự kiến hoàn thành trong khoảng {{priority_2_timeline}}.
+
+          ### Ưu tiên thứ ba: {{priority_3_name}}  
+
+          {{priority_3_rationale}} Mặc dù xếp thứ ba nhưng ý tưởng này vẫn có giá trị đáng kể do {{priority_3_reasoning}}. Việc triển khai sẽ cần {{priority_3_steps}}, với yêu cầu về nguồn lực là {{priority_3_resources}} và thời gian thực hiện dự kiến {{priority_3_timeline}}.
 
   - id: reflection-followup
-    title: Reflection & Follow-up
+    title: Phản tư và kế hoạch tiếp theo
     sections:
-      - id: what-worked
-        title: What Worked Well
-        type: bullet-list
-        template: "- {{aspect}}"
-      - id: areas-exploration
-        title: Areas for Further Exploration
-        type: bullet-list
-        template: "- {{area}}: {{reason}}"
-      - id: recommended-techniques
-        title: Recommended Follow-up Techniques
-        type: bullet-list
-        template: "- {{technique}}: {{reason}}"
-      - id: questions-emerged
-        title: Questions That Emerged
-        type: bullet-list
-        template: "- {{question}}"
-      - id: next-session
-        title: Next Session Planning
+      - id: reflection-introduction
         template: |
-          - **Suggested topics:** {{followup_topics}}
-          - **Recommended timeframe:** {{timeframe}}
-          - **Preparation needed:** {{preparation}}
+          ## Đánh giá và học hỏi
+
+          Việc phản tư về quá trình làm việc là một phần quan trọng để đảm bảo chúng ta có thể cải thiện liên tục và áp dụng những bài học có giá trị cho các phiên làm việc trong tương lai. Thông qua việc đánh giá những gì đã hiệu quả và những gì cần cải thiện, chúng ta có thể tiếp tục phát triển và tối ưu hóa phương pháp tiếp cận.
+
+      - id: session-effectiveness  
+        title: "## Hiệu quả của phiên làm việc"
+        template: |
+          Phiên làm việc này đã đạt được mức độ hiệu quả cao thông qua {{what_worked_narrative}}. Những yếu tố đóng góp vào thành công bao gồm việc áp dụng đúng phương pháp, sự tham gia tích cực của các bên liên quan và khả năng duy trì focus vào mục tiêu chính trong suốt quá trình thảo luận.
+
+      - id: exploration-opportunities
+        title: "## Cơ hội khám phá thêm"  
+        template: |
+          Mặc dù đã đạt được nhiều kết quả tích cực, phiên làm việc cũng đã mở ra những hướng nghiên cứu và khám phá mới. {{exploration_areas_narrative}} Những hướng này đại diện cho các cơ hội mở rộng hiểu biết và phát triển các giải pháp tinh vi hơn trong tương lai.
+
+      - id: future-sessions-planning
+        title: "## Kế hoạch cho các phiên tiếp theo"
+        template: |
+          Dựa trên kết quả và những hiểu biết thu được, chúng tôi đề xuất một lộ trình cho các phiên làm việc tiếp theo. {{future_planning_narrative}} Việc chuẩn bị cho các phiên tương lai bao gồm {{preparation_needed}}, với khung thời gian đề xuất là {{recommended_timeframe}} để đảm bảo tính liên tục và hiệu quả của quá trình phát triển.
 
   - id: footer
     content: |

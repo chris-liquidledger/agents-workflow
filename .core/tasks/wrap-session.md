@@ -43,21 +43,102 @@ If session has substantial value, create detailed analysis following this struct
 - **Business Impact:** Expected outcomes and value creation
 - **Success Metrics:** How success will be measured
 
-### Step 4: User Confirmation
+### Step 4: Document Classification
 
-Present session value assessment and ask for permission to save.
+**Auto-detect classification based on multi-factor analysis:**
 
-### Step 5: Notion Export
+1. **Agent Role Factor**:
+   - ll-ba → Business domain
+   - ll-cto → Technical domain  
+   - ll-pm → Product domain
+   - ll-po → Product domain
+
+2. **Session Content Analysis**:
+   - Keywords: architecture, system, brainstorming, analysis, implementation
+   - Cross-agent mentions: Multiple agents referenced → Cross-References
+   - Technical vs Business vs Product focus
+
+3. **Project Context Detection**:
+   - Scan for project names (AIMI, ProjectX, etc.)
+   - If no specific project → Meta/System level
+
+**Classification Algorithm:**
+```
+IF multiple_agents_mentioned OR system_design:
+  → /Cross-References/[Domain]/
+ELIF specific_project_detected:
+  → /[Project]/[Agent_Domain]/[Content_Type]/
+ELSE:
+  → /Meta/[Agent_Domain]/[Content_Type]/
+```
+
+### Step 4.5: Smart Classification with Hierarchy Config
+
+**Execute intelligent classification using hierarchy configuration:**
+
+1. **Load Hierarchy Config**:
+   - Read `.core/data/hierarchy-config.yaml`
+   - Get current project structures and thresholds
+   - Load agent-specific tagging rules
+
+2. **Generate Smart Tags**:
+   - **Agent tags**: Based on executing agent (ll-ba, ll-cto, etc.)
+   - **Project tags**: Detect project mentions in conversation
+   - **Content tags**: Identify content type and key concepts
+   - **Cross-reference tags**: When multiple agents mentioned
+
+3. **Apply Path Templates**:
+   ```yaml
+   IF cross_agent_content OR system_design:
+     → path_templates.cross_reference
+   ELIF specific_project_detected:
+     → path_templates.project_specific  
+   ELSE:
+     → path_templates.meta_content
+   ```
+
+4. **Threshold Check & Organizer Trigger**:
+   - Count pages in target project/domain
+   - If threshold reached → suggest ll-organizer review
+   - Update hierarchy config with new page count
+
+5. **Present Classification Results**:
+   ```
+   Suggested path: [Generated Path]
+   Smart tags: [Generated Tags]
+   Threshold status: [X/threshold pages]
+   [If threshold reached: "⚠️ Consider running /organize-notion for optimization"]
+   ```
+
+**Ask user confirmation:**  
+"Save to suggested location with these tags? (Y/N/Custom)"
+
+### Step 5: User Confirmation
+
+Present session value assessment and suggested classification path for user approval.
+
+### Step 6: Notion Export with Hierarchy Integration
 
 If user confirms:
 
 1. **Generate markdown file** from current session content
-2. **Create temporary markdown file** in root directory
-3. **Execute Notion export script**:
+2. **Execute hierarchy-aware export**:
    ```bash
-   cd .core/scripts && npm run dev -- --markdown ../../temp-session.md --title "Session Title" && cd ../..
+   cd .core/scripts && npm run dev -- --markdown ../../temp-session.md --title "Session Title" --path "[Classification Path]" && npm run hierarchy && cd ../..
    ```
-4. **Confirm successful save** with Notion page URL
+3. **Post-Export Threshold Check**:
+   - Hierarchy manager updates page counts
+   - Check if any thresholds triggered
+   - If triggered → present organizer suggestion to user:
+   ```
+   ⚠️ THRESHOLD REACHED: [Details]
+   Consider running /organize-notion for workspace optimization?
+   ```
+4. **Confirm successful save** with:
+   - Notion page URL  
+   - Final classification path
+   - Smart tags applied
+   - Current threshold status
 
 ## Quality Standards
 

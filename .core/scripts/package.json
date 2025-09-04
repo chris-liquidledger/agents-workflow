@@ -6,17 +6,19 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node src/yaml-to-notion.ts"
+    "dev": "ts-node src/yaml-to-notion.ts",
+    "hierarchy": "ts-node src/hierarchy-manager.ts"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.15",
     "dotenv": "^16.4.5",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "yaml": "^2.8.1"
   },
   "devDependencies": {
-    "typescript": "^5.4.5",
-    "@types/uuid": "^9.0.8",
     "@types/node": "^20.11.30",
-    "ts-node": "^10.9.2"
+    "@types/uuid": "^9.0.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
   }
 }
