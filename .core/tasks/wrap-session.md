@@ -22,26 +22,61 @@ Analyze current session for substantial content by checking:
 - Analysis sessions with specific findings and recommendations
 - Problem-solving with detailed solution exploration
 
-### Step 3: Generate Comprehensive Documentation
+### Step 3: Smart Template Selection & Documentation Generation
 
-If session has substantial value, create detailed analysis following this structure:
+If session has substantial value, perform intelligent template selection and generate documentation:
 
-#### **Document Header**
-```markdown
-# [Specific Session Topic] - [Session Type] Analysis
+#### **Step 3.1: AI Content Analysis for Template Detection**
 
-**Date:** [Date]
-**Type:** [Technical Architecture/Strategic Planning/Implementation/Analysis]
-**Duration:** [Duration]
-**Key Focus:** [Primary business/technical objective]
-```
+**As an AI agent, analyze the complete session content and autonomously determine the appropriate template:**
 
-#### **Executive Summary**
-- **Problem Statement:** What specific challenge was addressed?
-- **Solution Approach:** How was it approached and why?
-- **Key Decisions Made:** List critical decisions with rationale
-- **Business Impact:** Expected outcomes and value creation
-- **Success Metrics:** How success will be measured
+**AI Decision Process:**
+1. **Read entire session conversation** to understand context và content type
+2. **Identify dominant themes** through natural language understanding
+3. **Recognize content patterns** based on discussion topics và objectives  
+4. **Make template recommendation** using AI judgment (no manual scoring needed)
+
+**Template Categories AI Should Recognize:**
+- **Technical Documentation**: Architecture, systems, implementation, technical specs
+- **Business Analysis**: Strategy, market analysis, business planning, competitive analysis  
+- **Product Requirements**: Features, user stories, product planning, functionality specs
+- **Research Analysis**: Investigation, methodology, findings, comprehensive analysis
+
+**AI Autonomy**: Trust AI to determine context window, assess content significance, và make best template selection without explicit rules or thresholds.
+
+#### **Step 3.2: AI Template Selection Logic**
+
+**Simple AI-driven selection process:**
+
+1. **AI Content Understanding**: Use natural language comprehension để understand session focus
+2. **Template Recommendation**: AI suggests most appropriate template based on content analysis
+3. **Mixed Content Detection**: If AI detects multiple strong themes → suggest splitting into focused documents
+4. **Always Confirm**: Present recommendation to user with reasoning: "I detected [type] content because [reasoning]. Create [template]? (Y/N/Custom)"
+5. **AI Flexibility**: No rigid rules - AI makes best judgment call based on content understanding
+
+#### **Step 3.3: Mixed Content Handling**
+
+**When AI detects mixed content themes:**
+
+1. **Identify Multiple Themes**: AI recognizes when session covers multiple distinct areas (e.g., technical + business)
+2. **Suggest Document Splitting**: Recommend creating separate focused documents:
+   ```
+   "I detected both Technical and Business content. Suggest creating:
+   1. Technical Architecture Document (focus: system design aspects)  
+   2. Business Strategy Document (focus: strategic implications)
+   Proceed with split? (Y/N/Single document)"
+   ```
+3. **User Choice**: Allow user to choose splitting approach or single comprehensive document
+
+#### **Step 3.4: Template Application**
+
+**Apply selected template with AI-generated content:**
+- **technical-doc-tmpl.yaml** for technical/architecture content
+- **business-analysis-tmpl.yaml** for strategy/business content  
+- **prd-tmpl.yaml** for product/requirements content
+- **research-analysis-tmpl.yaml** for analysis/investigation content
+
+**AI Content Generation**: Use template structure but let AI generate contextually appropriate content following prose writing standards.
 
 ### Step 4: Document Classification
 

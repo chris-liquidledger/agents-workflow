@@ -1,0 +1,509 @@
+template:
+  id: code-analysis-template-v2
+  name: Code Analysis Results
+  version: 2.0
+  output:
+    format: markdown
+    filename: docs/code-analysis-results.md
+    title: "Code Analysis Results"
+
+workflow:
+  mode: comprehensive-explanation
+  focus: understanding_and_implementation
+  principles:
+    - explain_everything_assuming_zero_knowledge
+    - complete_function_coverage_no_skipping
+    - detailed_explanations_with_examples
+    - practical_code_explanations
+
+structure:
+  style: comprehensive-documentation
+  depth: complete-understanding
+  audience: [developers, architects, new-team-members]
+
+sections:
+  - id: header
+    content: |
+      # {{codebase_name}} - Technical Implementation Analysis
+      
+      **Analysis Date:** {{analysis_date}}
+      **Analyst:** {{analyst_name}}
+      **Codebase Path:** {{codebase_path}}
+      **Analysis Scope:** {{analysis_scope}}
+
+  - id: executive-summary
+    title: "System Overview"
+    template: |
+      ## What This System Does
+      
+      {{codebase_name}} is {{codebase_description_plain_english}}. 
+      
+      **Core Functionality Explained:**
+      {{main_functionality_detailed_explanation}}
+      
+      **Why This Architecture Was Chosen:**
+      {{architecture_choice_reasoning}}
+      
+      **Key Technologies Used:**
+      {{primary_technologies_with_explanations}}
+      
+      ## Implementation Highlights
+      
+      **Major Components Found:**
+      1. {{component_1_name_and_purpose}}
+      2. {{component_2_name_and_purpose}}  
+      3. {{component_3_name_and_purpose}}
+      
+      **Critical Implementation Details:**
+      {{critical_implementation_details}}
+      
+      **Potential Concerns:**
+      {{implementation_concerns_with_reasoning}}
+
+  - id: technology-stack
+    title: "Technology Stack & Architecture"
+    template: |
+      ## Technology Breakdown
+      
+      ### Programming Language & Why It Was Chosen
+      **Language:** {{primary_language}}
+      **Reasoning:** {{language_choice_detailed_explanation}}
+      **Key Features Used:** {{language_features_utilized}}
+      
+      ### Technical Concepts Explained
+      
+      #### Concept 1: {{technical_concept_1_name}}
+      **Real-World Analogy:** {{concept_1_analogy}}
+      **Technical Explanation:** {{concept_1_technical_explanation}}
+      **Why It Matters:** {{concept_1_importance}}
+      **Code Example:**
+      ```{{primary_language}}
+      {{concept_1_code_example}}
+      ```
+      **Explanation:** {{concept_1_code_explanation}}
+      
+      #### Concept 2: {{technical_concept_2_name}}
+      **Real-World Analogy:** {{concept_2_analogy}}
+      **Technical Explanation:** {{concept_2_technical_explanation}}
+      **Code Example:**
+      ```{{primary_language}}
+      {{concept_2_code_example}}
+      ```
+      **Explanation:** {{concept_2_code_explanation}}
+      
+      ### Architecture Pattern Explained
+      
+      **Pattern Used:** {{architectural_pattern}}
+      **What This Means:** {{pattern_explanation_from_basics}}
+      **Why This Pattern:** {{pattern_choice_reasoning}}
+      **Implementation Details:** {{pattern_implementation_specifics}}
+      
+      ### System Architecture Diagram
+      
+      ```mermaid
+      {{architecture_diagram}}
+      ```
+      
+      **Diagram Explanation:**
+      {{architecture_diagram_explanation}}
+      
+      **Component Interactions:**
+      {{component_interaction_explanation}}
+
+  - id: component-analysis
+    title: "Component Implementation Deep Dive"
+    template: |
+      ## Core Components Explained
+      
+      ### Component 1: {{component_1_name}}
+      **File Location:** `{{component_1_path}}`  
+      **What It Does:** {{component_1_purpose_detailed}}
+      
+      #### Complete Function Coverage - Every Function Explained
+      
+      **Function 1: {{comp1_function_1_name}}**
+      **Purpose:** {{comp1_function_1_purpose}}
+      **Complete Code:**
+      ```{{primary_language}}
+      {{comp1_function_1_complete_code}}
+      ```
+      **Explanation:** {{comp1_function_1_explanation}}
+      
+      **Function 2: {{comp1_function_2_name}}**
+      **Purpose:** {{comp1_function_2_purpose}}
+      **Complete Code:**
+      ```{{primary_language}}
+      {{comp1_function_2_complete_code}}
+      ```
+      **Explanation:** {{comp1_function_2_explanation}}
+      
+      **Function 3: {{comp1_function_3_name}}**
+      **Purpose:** {{comp1_function_3_purpose}}
+      **Complete Code:**
+      ```{{primary_language}}
+      {{comp1_function_3_complete_code}}
+      ```
+      **Explanation:** {{comp1_function_3_explanation}}
+      
+      **All Additional Functions:**
+      {{comp1_remaining_functions_summary}}
+      
+      **→ [Complete {{component_1_name}} Function Reference]** {{comp1_complete_reference_description}}
+      
+      #### How It Works Internally
+      ```mermaid
+      {{component_1_internal_diagram}}
+      ```
+      
+      **Diagram Explanation:**
+      {{component_1_diagram_explanation}}
+      
+      **Internal Process Flow:**
+      1. **{{internal_step_1_title}}:** {{internal_step_1_detailed_explanation}}
+      2. **{{internal_step_2_title}}:** {{internal_step_2_detailed_explanation}}
+      3. **{{internal_step_3_title}}:** {{internal_step_3_detailed_explanation}}
+      4. **{{internal_step_4_title}}:** {{internal_step_4_detailed_explanation}}
+      
+      ### Component 2: {{component_2_name}}
+      **File Location:** `{{component_2_path}}`
+      **What It Does:** {{component_2_purpose_detailed}}
+      
+      #### Complete Function Coverage - Every Function Explained
+      
+      **Function 1: {{comp2_function_1_name}}**
+      **Purpose:** {{comp2_function_1_purpose}}
+      **Complete Code:**
+      ```{{primary_language}}
+      {{comp2_function_1_complete_code}}
+      ```
+      **Explanation:** {{comp2_function_1_explanation}}
+      
+      **Function 2: {{comp2_function_2_name}}**
+      **Purpose:** {{comp2_function_2_purpose}}
+      **Complete Code:**
+      ```{{primary_language}}
+      {{comp2_function_2_complete_code}}
+      ```
+      **Explanation:** {{comp2_function_2_explanation}}
+      
+      **All Additional Functions:**
+      {{comp2_remaining_functions_summary}}
+      
+      **→ [Complete {{component_2_name}} Function Reference]** {{comp2_complete_reference_description}}
+      
+      ### Component 3: {{component_3_name}}
+      **File Location:** `{{component_3_path}}`
+      **What It Does:** {{component_3_purpose_detailed}}
+      
+      #### Complete Function Coverage
+      **All Functions Summary:** {{comp3_all_functions_summary}}
+      **→ [Complete {{component_3_name}} Function Reference]** {{comp3_complete_reference_description}}
+
+  - id: data-flow-analysis
+    title: "How Data Flows Through The System"
+    template: |
+      ## Understanding the Data Journey
+      
+      ### Primary User Flow: {{primary_journey_name}}
+      
+      ```mermaid
+      {{primary_journey_flow}}
+      ```
+      
+      **What Happens Step by Step:**
+      1. **{{flow_step_1_name}}:** {{flow_step_1_detailed_explanation}}
+      2. **{{flow_step_2_name}}:** {{flow_step_2_detailed_explanation}}
+      3. **{{flow_step_3_name}}:** {{flow_step_3_detailed_explanation}}
+      4. **{{flow_step_4_name}}:** {{flow_step_4_detailed_explanation}}
+      
+      ### Data Transformation Explained
+      
+      #### Where Data Comes From
+      {{input_data_sources_with_examples}}
+      
+      #### How Data Gets Processed
+      {{data_transformation_step_by_step}}
+      
+      #### Code Examples of Data Processing
+      ```{{primary_language}}
+      {{data_processing_code_example}}
+      ```
+      **Explanation:** {{data_processing_explanation}}
+      
+      ### Error Handling & Edge Cases
+      
+      **How Errors Are Handled:** {{error_handling_detailed_explanation}}
+      
+      **Error Handling Code Example:**
+      ```{{primary_language}}
+      {{error_handling_code_example}}
+      ```
+      
+      **Common Problems and Solutions:**
+      1. **{{edge_case_1}}:** {{edge_case_1_detailed_explanation}}
+      2. **{{edge_case_2}}:** {{edge_case_2_detailed_explanation}}
+      3. **{{edge_case_3}}:** {{edge_case_3_detailed_explanation}}
+
+  - id: mathematical-concepts
+    title: "Mathematical Concepts"
+    template: |
+      ## Mathematical Foundation
+      
+      ### Mathematical Concept 1: {{math_concept_1_name}}
+      **Real-World Analogy:** {{math_concept_1_analogy}}
+      **Mathematical Explanation:** {{math_concept_1_explanation}}
+      **Formula:**
+      $${{math_formula_1}}$$
+      **Implementation:**
+      ```{{primary_language}}
+      {{math_concept_1_implementation}}
+      ```
+      **Explanation:** {{math_concept_1_code_explanation}}
+      
+      ### Mathematical Concept 2: {{math_concept_2_name}}
+      **Real-World Analogy:** {{math_concept_2_analogy}}
+      **Mathematical Explanation:** {{math_concept_2_explanation}}
+      **Formula:**
+      $${{math_formula_2}}$$
+      **Implementation:**
+      ```{{primary_language}}
+      {{math_concept_2_implementation}}
+      ```
+      **Explanation:** {{math_concept_2_code_explanation}}
+
+  # Natural transition to goal-driven approach
+  - id: practical-scenarios
+    title: "Practical Implementation Scenarios"
+    template: |
+      ## Now Let's Build Something
+      
+      Understanding the components is great, but how do you actually use them? Let's explore practical scenarios.
+      
+      ### Scenario 1: {{goal_scenario_1_title}}
+      
+      **What You Want to Achieve:** {{scenario_1_user_goal}}
+      **Starting Point:** {{scenario_1_starting_point}}
+      **End Goal:** {{scenario_1_end_result}}
+      
+      #### To Achieve This, You Need:
+      
+      **Step 1: {{scenario_1_step_1_title}}**
+      **Why This Step:** {{scenario_1_step_1_reasoning}}
+      **Which Component:** {{scenario_1_step_1_component}}
+      **Function to Call:** `{{scenario_1_step_1_function_call}}`
+      **Implementation:**
+      ```{{primary_language}}
+      {{scenario_1_step_1_code}}
+      ```
+      **What This Code Does:** {{scenario_1_step_1_explanation}}
+      
+      **Step 2: {{scenario_1_step_2_title}}**
+      **Why This Step:** {{scenario_1_step_2_reasoning}}
+      **Implementation:**
+      ```{{primary_language}}
+      {{scenario_1_step_2_code}}
+      ```
+      
+      **Step 3: {{scenario_1_step_3_title}}**
+      **Implementation:**
+      ```{{primary_language}}
+      {{scenario_1_step_3_code}}
+      ```
+      
+      **Complete Flow:**
+      ```mermaid
+      {{scenario_1_complete_flow_diagram}}
+      ```
+      
+      ### Scenario 2: {{goal_scenario_2_title}}
+      
+      **What You Want:** {{scenario_2_user_goal}}
+      **Implementation Path:** {{scenario_2_step_by_step_summary}}
+      
+      ### Scenario 3: {{goal_scenario_3_title}}
+      
+      **What You Want:** {{scenario_3_user_goal}}
+      **Implementation Path:** {{scenario_3_step_by_step_summary}}
+
+  - id: dependency-connections
+    title: "Understanding Dependencies & Connections"
+    template: |
+      ## How Everything Connects
+      
+      ### Dependency Map
+      
+      ```mermaid
+      {{complete_dependency_diagram}}
+      ```
+      
+      **Dependency Diagram Explanation:**
+      {{dependency_diagram_explanation}}
+      
+      **Key Dependencies:**
+      1. **{{dependency_1}}:** {{dependency_1_explanation}}
+      2. **{{dependency_2}}:** {{dependency_2_explanation}}
+      3. **{{dependency_3}}:** {{dependency_3_explanation}}
+      
+      ### "To Use X, You Need Y" Logic
+      
+      #### For {{dependency_chain_1_target}}:
+      **You need:**
+      1. **{{dep_chain_1_direct_dep_1}}** - {{dep_chain_1_direct_dep_1_reason}}
+      2. **{{dep_chain_1_direct_dep_2}}** - {{dep_chain_1_direct_dep_2_reason}}
+      
+      **Setup sequence:**
+      ```{{primary_language}}
+      {{dependency_chain_1_setup_code}}
+      ```
+      
+      #### For {{dependency_chain_2_target}}:
+      **You need:** {{dependency_chain_2_requirements}}
+      **Setup:**
+      ```{{primary_language}}
+      {{dependency_chain_2_setup_code}}
+      ```
+      
+      ### Integration Points
+      
+      **Where components connect:** {{integration_points_explained}}
+
+  - id: implementation-walkthroughs
+    title: "Step-by-Step Implementation Guide"
+    template: |
+      ## Ready to Build? Complete Walkthroughs
+      
+      ### Walkthrough 1: {{implementation_walkthrough_1_title}}
+      
+      **Goal:** {{walkthrough_1_goal}}
+      **What You'll Build:** {{walkthrough_1_end_result}}
+      
+      **Step 1: {{walkthrough_1_step_1_title}}**
+      ```{{primary_language}}
+      {{walkthrough_1_step_1_code}}
+      ```
+      **Explanation:** {{walkthrough_1_step_1_explanation}}
+      
+      **Step 2: {{walkthrough_1_step_2_title}}**
+      ```{{primary_language}}
+      {{walkthrough_1_step_2_code}}
+      ```
+      **Explanation:** {{walkthrough_1_step_2_explanation}}
+      
+      **Step 3: {{walkthrough_1_step_3_title}}**
+      ```{{primary_language}}
+      {{walkthrough_1_step_3_code}}
+      ```
+      
+      **Testing:**
+      ```{{primary_language}}
+      {{walkthrough_1_test_code}}
+      ```
+      **Expected Result:** {{walkthrough_1_expected_output}}
+      
+      ### Walkthrough 2: {{implementation_walkthrough_2_title}}
+      **Goal:** {{walkthrough_2_goal}}
+      **Summary:** {{walkthrough_2_summary}}
+      
+      ### Common Implementation Patterns
+      
+      **Pattern 1:** {{common_pattern_1_title}}
+      **When to use:** {{pattern_1_usage_context}}
+      **Template:**
+      ```{{primary_language}}
+      {{pattern_1_template_code}}
+      ```
+      
+      **Pattern 2:** {{common_pattern_2_title}}
+      **Template:**
+      ```{{primary_language}}
+      {{pattern_2_template_code}}
+      ```
+
+  - id: troubleshooting
+    title: "Common Issues & Solutions"
+    template: |
+      ## When Things Go Wrong
+      
+      ### Issue 1: {{common_issue_1_title}}
+      **Symptoms:** {{issue_1_symptoms}}
+      **Cause:** {{issue_1_root_cause}}
+      **Solution:**
+      ```{{primary_language}}
+      {{issue_1_solution_code}}
+      ```
+      **Why this works:** {{issue_1_solution_explanation}}
+      
+      ### Issue 2: {{common_issue_2_title}}
+      **Symptoms:** {{issue_2_symptoms}}
+      **Solution:** {{issue_2_solution_summary}}
+
+  - id: learning-resources
+    title: "Next Steps & Learning Path"
+    template: |
+      ## For New Developers
+      
+      ### Essential Files to Master First
+      
+      **File 1: {{essential_file_1}}**
+      **Why start here:** {{essential_file_1_importance}}
+      **Key functions to understand:**
+      ```{{primary_language}}
+      {{essential_file_1_key_functions}}
+      ```
+      
+      **File 2: {{essential_file_2}}**
+      **Purpose:** {{essential_file_2_detailed_purpose}}
+      **Key functions:**
+      ```{{primary_language}}
+      {{essential_file_2_key_functions}}
+      ```
+      
+      ### Hands-On Exercises
+      
+      **Exercise 1: {{learning_exercise_1}}**
+      **Goal:** {{exercise_1_goal}}
+      **Steps:** {{exercise_1_steps}}
+      **Expected output:** {{exercise_1_output}}
+      
+      **Exercise 2: {{learning_exercise_2}}**
+      **Goal:** {{exercise_2_goal}}
+      **Steps:** {{exercise_2_steps}}
+
+  - id: reference-summary
+    title: "Quick Reference"
+    template: |
+      ## Quick Reference
+      
+      ### Component Summary
+      - **{{component_1_name}}:** {{component_1_purpose_brief}}
+      - **{{component_2_name}}:** {{component_2_purpose_brief}}  
+      - **{{component_3_name}}:** {{component_3_purpose_brief}}
+      
+      ### Key Functions Quick Reference
+      {{key_functions_quick_reference}}
+      
+      ### Common Code Patterns
+      {{common_patterns_quick_reference}}
+      
+      ## Technical Terms Glossary
+      {{technical_glossary_detailed}}
+      
+      ## Complete Function References
+      
+      **Detailed Analysis Available:**
+      - **→ [{{component_1_name}} Complete Function Reference]** {{comp1_complete_reference_link}}
+      - **→ [{{component_2_name}} Complete Function Reference]** {{comp2_complete_reference_link}}  
+      - **→ [{{component_3_name}} Complete Function Reference]** {{comp3_complete_reference_link}}
+
+  - id: footer
+    content: |
+      ---
+      
+      **Analysis Summary:**
+      - **Analysis Date:** {{analysis_date}}
+      - **Files Examined:** {{total_files_analyzed}}
+      - **Code Lines Reviewed:** {{lines_of_code_reviewed}}
+      - **Analysis Focus:** Complete understanding and practical implementation
+      
+      ---
+      *Comprehensive analysis with natural flow from understanding to implementation*

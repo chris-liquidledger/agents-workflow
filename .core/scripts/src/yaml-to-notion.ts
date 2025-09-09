@@ -9,41 +9,172 @@ const notion = new Client({
   auth: process.env.NOTION_API_KEY,
 });
 
+// Process rich text formatting (bold/italic) in content
+function processRichText(content: string): any[] {
+  const richTextArray: any[] = [];
+  let currentIndex = 0;
+  
+  // Simple regex approach for **bold** and *italic*
+  const boldItalicRegex = /(\*\*(.+?)\*\*)|(\*(.+?)\*)/g;
+  let match;
+  
+  while ((match = boldItalicRegex.exec(content)) !== null) {
+    // Add text before the match as plain text
+    if (match.index > currentIndex) {
+      const plainText = content.substring(currentIndex, match.index);
+      if (plainText) {
+        richTextArray.push({
+          type: 'text',
+          text: { content: plainText }
+        });
+      }
+    }
+    
+    // Add formatted text
+    if (match[1]) {
+      // **bold** pattern
+      richTextArray.push({
+        type: 'text',
+        text: { content: match[2] },
+        annotations: { bold: true }
+      });
+    } else if (match[3]) {
+      // *italic* pattern  
+      richTextArray.push({
+        type: 'text',
+        text: { content: match[4] },
+        annotations: { italic: true }
+      });
+    }
+    
+    currentIndex = match.index + match[0].length;
+  }
+  
+  // Add remaining text as plain text
+  if (currentIndex < content.length) {
+    const remainingText = content.substring(currentIndex);
+    if (remainingText) {
+      richTextArray.push({
+        type: 'text',
+        text: { content: remainingText }
+      });
+    }
+  }
+  
+  // If no formatting found, return simple text block
+  if (richTextArray.length === 0) {
+    return [{ type: 'text', text: { content: content } }];
+  }
+  
+  return richTextArray;
+}
+
+// Map language identifiers to Notion supported languages
+function mapToNotionLanguage(language: string): string {
+  const languageMap: { [key: string]: string } = {
+    'env': 'bash',
+    'sh': 'shell', 
+    'js': 'javascript',
+    'ts': 'typescript',
+    'py': 'python',
+    'yml': 'yaml',
+    'json5': 'json',
+    'dockerfile': 'docker',
+    'makefile': 'makefile',
+    'md': 'markdown',
+    'txt': 'plain text',
+    '': 'plain text'
+  };
+  
+  const lowerLanguage = language.toLowerCase();
+  return languageMap[lowerLanguage] || lowerLanguage;
+}
+
 // Parse markdown content to Notion blocks
 function parseMarkdownToBlocks(markdown: string): any[] {
   const lines = markdown.split('\n');
   const blocks: any[] = [];
+  let i = 0;
   
-  for (const line of lines) {
+  while (i < lines.length) {
+    const line = lines[i];
+    
+    // Handle code blocks
+    if (line.startsWith('```')) {
+      const rawLanguage = line.substring(3).trim() || 'plain text';
+      const language = mapToNotionLanguage(rawLanguage);
+      const codeLines: string[] = [];
+      i++; // Move past opening ```
+      
+      // Collect code block content
+      while (i < lines.length && !lines[i].startsWith('```')) {
+        codeLines.push(lines[i]);
+        i++;
+      }
+      
+      // Create code block
+      blocks.push({
+        type: 'code',
+        code: {
+          caption: [],
+          rich_text: [{
+            type: 'text',
+            text: { content: codeLines.join('\n') }
+          }],
+          language: language
+        }
+      });
+      
+      i++; // Move past closing ```
+      continue;
+    }
+    
+    // Handle headings
     if (line.startsWith('# ')) {
       blocks.push({
         type: 'heading_1',
         heading_1: {
-          rich_text: [{ type: 'text', text: { content: line.substring(2) } }]
+          rich_text: processRichText(line.substring(2))
         }
       });
     } else if (line.startsWith('## ')) {
       blocks.push({
         type: 'heading_2', 
         heading_2: {
-          rich_text: [{ type: 'text', text: { content: line.substring(3) } }]
+          rich_text: processRichText(line.substring(3))
         }
       });
     } else if (line.startsWith('### ')) {
       blocks.push({
         type: 'heading_3',
         heading_3: {
-          rich_text: [{ type: 'text', text: { content: line.substring(4) } }]
+          rich_text: processRichText(line.substring(4))
+        }
+      });
+    } else if (line.startsWith('#### ') || line.startsWith('##### ') || line.startsWith('###### ')) {
+      // H4+ converted to bold paragraphs (Notion only supports H1-H3)
+      const level = line.match(/^#+/)?.[0].length || 4;
+      const content = line.substring(level + 1);
+      blocks.push({
+        type: 'paragraph',
+        paragraph: {
+          rich_text: [{ 
+            type: 'text', 
+            text: { content: content },
+            annotations: { bold: true }
+          }]
         }
       });
     } else if (line.trim() && !line.startsWith('---') && line.trim() !== '') {
       blocks.push({
         type: 'paragraph',
         paragraph: {
-          rich_text: [{ type: 'text', text: { content: line } }]
+          rich_text: processRichText(line)
         }
       });
     }
+    
+    i++;
   }
   
   return blocks;
